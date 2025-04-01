@@ -1,9 +1,10 @@
 import { type DMMF } from "@prisma/generator-helper";
 import { DMMFCommand } from "../dmmfModifier";
 import { type Datamodel } from "../datamodel";
+import { Mutable } from "../types";
 
 export class RemoveFieldCommand extends DMMFCommand {
-  private field!: DMMF.Field;
+  private field!: Mutable<DMMF.Field>;
   constructor(private modelName: string, private fieldName: string) {
     super();
   }

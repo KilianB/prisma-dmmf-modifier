@@ -1,11 +1,12 @@
-import { type DMMF } from "@prisma/generator-helper";
+import type { DMMF } from "@prisma/generator-helper";
 import { DMMFCommand } from "../dmmfModifier";
-import { type Datamodel } from "../datamodel";
+import type { Datamodel } from "../datamodel";
+import type { Mutable } from "../types";
 
 export class AddFieldCommand extends DMMFCommand {
   constructor(
     private modelName: string,
-    private field: DMMF.Field,
+    private field: Mutable<DMMF.Field>,
     private isManyToManyRelation?: boolean
   ) {
     super();

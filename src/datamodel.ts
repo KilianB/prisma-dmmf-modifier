@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { type DMMF } from "@prisma/generator-helper";
+import type { DMMF } from "@prisma/generator-helper";
 import { addEnumFieldWithSafeName, addFieldWithSafeName } from "./helpers";
 import { RelationManager } from "./relationManager";
-import { Mutable, MutableDmmfDatamodel, type DmmfDatamodel } from "./types";
+import type { Mutable, MutableDmmfDatamodel, DmmfDatamodel } from "./types";
 export class Datamodel {
   datamodel: MutableDmmfDatamodel;
 

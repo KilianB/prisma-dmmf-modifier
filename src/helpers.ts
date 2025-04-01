@@ -1,10 +1,10 @@
-import { type DMMF } from "@prisma/generator-helper";
-import { type DmmfDatamodel } from "./types";
+import type { DMMF } from "@prisma/generator-helper";
+import type { Mutable, DmmfDatamodel } from "./types";
 
 export const addFieldWithSafeName = (
-  datamodel: DmmfDatamodel,
+  datamodel: Mutable<DmmfDatamodel>,
   modelName: string,
-  field: DMMF.Field
+  field: Mutable<DMMF.Field>
 ) => {
   const dmmf = datamodel.models;
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -27,7 +27,7 @@ export const addFieldWithSafeName = (
   return field.name;
 };
 export const addEnumFieldWithSafeName = (
-  datamodel: DmmfDatamodel,
+  datamodel: Mutable<DmmfDatamodel>,
   enumName: string,
   field: string
 ) => {

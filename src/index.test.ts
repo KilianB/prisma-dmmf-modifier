@@ -1,13 +1,14 @@
-import { type DMMF } from "@prisma/generator-helper";
+import type { DMMF } from "@prisma/generator-helper";
 import { DMMfModifier } from "./dmmfModifier";
-import { AddOrUpdateFieldCommand } from "./commands/addFieldCommand";
-import { removeFieldCommand } from "./commands/removeFieldCommand";
+import { AddFieldCommand } from "./commands/addFieldCommand";
+import { RemoveFieldCommand } from "./commands/removeFieldCommand";
 import { dmmfExample, dmmfExampleToTestRelation } from "./__dmmfExample";
+import type { Mutable } from "./types";
 
 const dmmfModifier = new DMMfModifier(dmmfExample);
 
 test("add field command", () => {
-  const addField = new AddOrUpdateFieldCommand("User", {
+  const addField = new AddFieldCommand("User", {
     name: "nickname",
     kind: "scalar",
     isList: false,
@@ -41,7 +42,7 @@ test("add field command", () => {
 });
 
 test("remove field command", () => {
-  const addField = new AddOrUpdateFieldCommand("User", {
+  const addField = new AddFieldCommand("User", {
     name: "nickname2",
     kind: "scalar",
     isList: false,
@@ -65,7 +66,7 @@ test("remove field command", () => {
 
   expect(fieldIsAdded).toBe(true);
 
-  const removeField = new removeFieldCommand("User", "nickname2");
+  const removeField = new RemoveFieldCommand("User", "nickname2");
 
   dmmfModifier.do(removeField);
 
@@ -90,7 +91,7 @@ test("remove field command", () => {
 
 test("add one to one relation", () => {
   const dmmfModifierOneToOne = new DMMfModifier(dmmfExampleToTestRelation);
-  const oneToOneFieldObject: DMMF.Field = {
+  const oneToOneFieldObject: Mutable<DMMF.Field> = {
     name: "post",
     kind: "object",
     isList: false,
@@ -106,10 +107,7 @@ test("add one to one relation", () => {
     isGenerated: false,
     isUpdatedAt: false,
   };
-  const addRelationField = new AddOrUpdateFieldCommand(
-    "User",
-    oneToOneFieldObject
-  );
+  const addRelationField = new AddFieldCommand("User", oneToOneFieldObject);
 
   dmmfModifierOneToOne.do(addRelationField);
 
@@ -164,7 +162,7 @@ test("add one to one relation", () => {
 
 test("add one to many relation", () => {
   const dmmfModifierOneToMany = new DMMfModifier(dmmfExampleToTestRelation);
-  const oneToOneFieldObject: DMMF.Field = {
+  const oneToOneFieldObject: Mutable<DMMF.Field> = {
     name: "posts",
     kind: "object",
     isList: true,
@@ -180,10 +178,7 @@ test("add one to many relation", () => {
     isGenerated: false,
     isUpdatedAt: false,
   };
-  const addRelationField = new AddOrUpdateFieldCommand(
-    "User",
-    oneToOneFieldObject
-  );
+  const addRelationField = new AddFieldCommand("User", oneToOneFieldObject);
 
   dmmfModifierOneToMany.do(addRelationField);
 
@@ -238,7 +233,7 @@ test("add one to many relation", () => {
 
 test("add many to many relation", () => {
   const dmmfModifierOneToMany = new DMMfModifier(dmmfExampleToTestRelation);
-  const oneToOneFieldObject: DMMF.Field = {
+  const oneToOneFieldObject: Mutable<DMMF.Field> = {
     name: "posts",
     kind: "object",
     isList: true,
@@ -254,7 +249,7 @@ test("add many to many relation", () => {
     isGenerated: false,
     isUpdatedAt: false,
   };
-  const addRelationField = new AddOrUpdateFieldCommand(
+  const addRelationField = new AddFieldCommand(
     "User",
     oneToOneFieldObject,
     true
