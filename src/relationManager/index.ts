@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { type DMMF } from "@prisma/generator-helper";
-import { type Datamodel } from "../types";
+import { type DmmfDatamodel } from "../types";
 import {
   ManyToMany,
   OneToMany,
@@ -20,7 +20,7 @@ export class RelationManager {
   public relationName: string;
 
   constructor(
-    public datamodel: Datamodel,
+    public datamodel: DmmfDatamodel,
     public modelName: string,
     public fieldName: string,
     public isManyToManyRelation = false

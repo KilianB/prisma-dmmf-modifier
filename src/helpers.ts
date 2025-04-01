@@ -1,8 +1,8 @@
 import { type DMMF } from "@prisma/generator-helper";
-import { type Datamodel } from "./types";
+import { type DmmfDatamodel } from "./types";
 
 export const addFieldWithSafeName = (
-  datamodel: Datamodel,
+  datamodel: DmmfDatamodel,
   modelName: string,
   field: DMMF.Field
 ) => {
@@ -27,7 +27,7 @@ export const addFieldWithSafeName = (
   return field.name;
 };
 export const addEnumFieldWithSafeName = (
-  datamodel: Datamodel,
+  datamodel: DmmfDatamodel,
   enumName: string,
   field: string
 ) => {

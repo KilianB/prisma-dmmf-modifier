@@ -2,9 +2,9 @@
 import { type DMMF } from "@prisma/generator-helper";
 import { addEnumFieldWithSafeName, addFieldWithSafeName } from "./helpers";
 import { RelationManager } from "./relationManager";
-import { type datamodel } from "./types";
+import { type DmmfDatamodel } from "./types";
 export class Datamodel {
-  constructor(private datamodel: datamodel) {}
+  constructor(private datamodel: DmmfDatamodel) {}
 
   addModel(modelName: string, oldName?: string) {
     if (oldName) {

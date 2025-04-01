@@ -1,3 +1,3 @@
 import { type DMMF } from "@prisma/generator-helper";
 
-export type Datamodel = DMMF.Document["datamodel"];
+export type DmmfDatamodel = DMMF.Document["datamodel"];

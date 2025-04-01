@@ -1,5 +1,5 @@
 import { Datamodel } from "./datamodel";
-import { type Datamodel } from "./types";
+import { type DmmfDatamodel } from "./types";
 
 export abstract class DMMFCommand {
   abstract do(datamodel: Datamodel): void;
@@ -9,7 +9,7 @@ export abstract class DMMFCommand {
 export class DMMfModifier {
   private history: DMMFCommand[] = [];
   private datamodel: Datamodel;
-  constructor(datamodel: Datamodel) {
+  constructor(datamodel: DmmfDatamodel) {
     this.datamodel = new Datamodel(datamodel);
   }
   get() {
@@ -30,7 +30,7 @@ export class DMMfModifier {
       .find((e) => e.name === enumName)!
       .values.map((v) => v.name);
   }
-  set(datamodel: Datamodel) {
+  set(datamodel: DmmfDatamodel) {
     this.history = [];
     this.datamodel = new Datamodel(datamodel);
   }

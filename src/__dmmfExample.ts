@@ -1,4 +1,4 @@
-import { type Datamodel } from "./types";
+import { type DmmfDatamodel } from "./types";
 
 export const dmmfExampleToTestRelation = {
   enums: [],
@@ -104,7 +104,7 @@ export const dmmfExampleToTestRelation = {
     },
   ],
   types: [],
-} as unknown as Datamodel;
+} as unknown as DmmfDatamodel;
 
 export const dmmfExample = {
   enums: [],
@@ -164,7 +164,7 @@ export const dmmfExample = {
     },
   ],
   types: [],
-} as unknown as Datamodel;
+} as unknown as DmmfDatamodel;
 
 export const dmmfExampleWithOneToOneRelation = {
   enums: [],
@@ -270,7 +270,7 @@ export const dmmfExampleWithOneToOneRelation = {
     },
   ],
   types: [],
-} as unknown as Datamodel;
+} as unknown as DmmfDatamodel;
 
 export const dmmfExampleWithOneToManyRelation = {
   enums: [],
@@ -376,4 +376,4 @@ export const dmmfExampleWithOneToManyRelation = {
     },
   ],
   types: [],
-} as unknown as Datamodel;
+} as unknown as DmmfDatamodel;
