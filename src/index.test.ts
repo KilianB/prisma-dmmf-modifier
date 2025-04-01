@@ -4,6 +4,7 @@ import { AddFieldCommand } from "./commands/addFieldCommand";
 import { RemoveFieldCommand } from "./commands/removeFieldCommand";
 import { dmmfExample, dmmfExampleToTestRelation } from "./__dmmfExample";
 import type { Mutable } from "./types";
+import { test, expect } from "bun:test";
 
 const dmmfModifier = new DMMfModifier(dmmfExample);
 
