@@ -1,6 +1,6 @@
 {
   "name": "@kilianb/prisma-dmmf-modifier",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "repository": "kilianb/prisma-dmmf-modifier",
   "main": "dist/index.js",
@@ -15,7 +15,8 @@
     "npm": ">=5"
   },
   "files": [
-    "src/**"
+    "src/**",
+    "dist/**"
   ],
   "author": "Kilian Brachtendorf <kilian.brachtendorf@t-online.de>",
   "contributors": [
@@ -42,7 +43,6 @@
     "@typescript-eslint/parser": "^8.29.0",
     "eslint": "^9.23.0",
     "prisma": "^6.5.0",
-    "rimraf": "^6.0.1",
     "typescript": "^5.8.2"
   }
 }
