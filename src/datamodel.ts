@@ -2,9 +2,13 @@
 import { type DMMF } from "@prisma/generator-helper";
 import { addEnumFieldWithSafeName, addFieldWithSafeName } from "./helpers";
 import { RelationManager } from "./relationManager";
-import { type DmmfDatamodel } from "./types";
+import { Mutable, MutableDmmfDatamodel, type DmmfDatamodel } from "./types";
 export class Datamodel {
-  constructor(private datamodel: DmmfDatamodel) {}
+  datamodel: MutableDmmfDatamodel;
+
+  constructor(datamodel: DmmfDatamodel) {
+    this.datamodel = structuredClone(datamodel) as MutableDmmfDatamodel;
+  }
 
   addModel(modelName: string, oldName?: string) {
     if (oldName) {
@@ -29,6 +33,8 @@ export class Datamodel {
         this.datamodel.models.push({
           name: modelName,
           dbName: null,
+          //Database schema. If multi schema is supported
+          schema: null,
           fields: [
             {
               name: "id",
@@ -189,7 +195,7 @@ export class Datamodel {
 
   addField(
     modelName: string,
-    field: DMMF.Field,
+    field: Mutable<DMMF.Field>,
     relationType?: "1-1" | "1-n" | "n-m"
   ) {
     const addedFieldName = addFieldWithSafeName(
@@ -332,7 +338,7 @@ export class Datamodel {
   updateField(
     modelName: string,
     originalFieldName: string,
-    field: Partial<DMMF.Field>,
+    field: Mutable<Partial<DMMF.Field>>,
     isManyToManyRelation = false
   ) {
     const dmmf = this.datamodel.models;
@@ -356,7 +362,7 @@ export class Datamodel {
       }
 
       if (updated.default === undefined) delete updated.default;
-      if (updated.native === undefined) delete updated.native;
+      if (updated.nativeType === undefined) delete updated.nativeType;
 
       model.fields[fieldIndex] = updated;
     } else {

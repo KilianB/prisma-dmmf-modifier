@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { type DMMF } from "@prisma/generator-helper";
-import { type DmmfDatamodel } from "../types";
+import { Mutable, type DmmfDatamodel } from "../types";
 import {
   ManyToMany,
   OneToMany,
@@ -10,17 +10,17 @@ import {
 
 export class RelationManager {
   public relationType: RelationType;
-  public fromModel: DMMF.Model;
-  public fromField: DMMF.Field;
-  public foreignKeyField!: DMMF.Field;
+  public fromModel: Mutable<DMMF.Model>;
+  public fromField: Mutable<DMMF.Field>;
+  public foreignKeyField!: Mutable<DMMF.Field>;
   public fromFieldHasForeignField: boolean;
-  public toModel: DMMF.Model;
-  public toField: DMMF.Field;
+  public toModel: Mutable<DMMF.Model>;
+  public toField: Mutable<DMMF.Field>;
   public toFieldHasForeignField: boolean;
   public relationName: string;
 
   constructor(
-    public datamodel: DmmfDatamodel,
+    public datamodel: Mutable<DmmfDatamodel>,
     public modelName: string,
     public fieldName: string,
     public isManyToManyRelation = false
@@ -96,7 +96,7 @@ export class RelationManager {
       (f) => f.name !== this.foreignKeyField.name
     );
   }
-  updateForeignKeyField(props: Partial<DMMF.Field>) {
+  updateForeignKeyField(props: Mutable<Partial<DMMF.Field>>) {
     const model = this.fromFieldHasForeignField ? "fromModel" : "toModel";
     const index = this[model].fields.findIndex(
       (f) => f.name === this.foreignKeyField.name
@@ -104,7 +104,7 @@ export class RelationManager {
     this[model].fields[index] = { ...this[model].fields[index], ...props };
   }
 
-  updateFromField(props: Partial<DMMF.Field>) {
+  updateFromField(props: Mutable<Partial<DMMF.Field>>) {
     const formFieldIndex = this.fromModel.fields.findIndex(
       (f) => f.name === this.fromField.name
     );
@@ -113,7 +113,7 @@ export class RelationManager {
       ...props,
     };
   }
-  updateToField(props: Partial<DMMF.Field>) {
+  updateToField(props: Mutable<Partial<DMMF.Field>>) {
     const toFieldIndex = this.toModel.fields.findIndex(
       (f) => f.name === this.toField.name
     );
