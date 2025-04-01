@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import type { DMMF } from "@prisma/generator-helper";
 import { addEnumFieldWithSafeName, addFieldWithSafeName } from "./helpers";
 import { RelationManager } from "./relationManager";
@@ -204,7 +203,6 @@ export class Datamodel {
       field
     );
 
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const currentModel = this.datamodel.models.find(
       (model) => model.name === modelName
     )!;
@@ -342,7 +340,6 @@ export class Datamodel {
     isManyToManyRelation = false
   ) {
     const dmmf = this.datamodel.models;
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const model = dmmf.find((model) => model.name === modelName)!;
     const fieldIndex = model.fields.findIndex(
       (f) => f.name === originalFieldName

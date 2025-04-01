@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import type { DMMF } from "@prisma/generator-helper";
 import type { Mutable, DmmfDatamodel } from "../types";
 import {

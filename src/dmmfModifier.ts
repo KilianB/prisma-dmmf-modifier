@@ -25,7 +25,6 @@ export class DMMfModifier {
   }
   getEnumOptions(enumName: string) {
     const datamodel = this.datamodel.get();
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     return datamodel.enums
       .find((e) => e.name === enumName)!
       .values.map((v) => v.name);

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { type DMMF } from "@prisma/generator-helper";
 import { RelationType } from "./relationType";
 import { type RelationUpdate } from "./types";

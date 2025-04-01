@@ -7,7 +7,6 @@ export const addFieldWithSafeName = (
   field: Mutable<DMMF.Field>
 ) => {
   const dmmf = datamodel.models;
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const currentModel = dmmf.find((model) => model.name === modelName)!;
   const fieldNames = currentModel.fields.map((field) => field.name);
   let fieldName = field.name;
@@ -32,7 +31,6 @@ export const addEnumFieldWithSafeName = (
   field: string
 ) => {
   const dmmf = datamodel.enums;
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const currentModel = dmmf.find((e) => e.name === enumName)!;
   const fieldNames = currentModel.values.map((field) => field.name);
   let fieldName = field;
